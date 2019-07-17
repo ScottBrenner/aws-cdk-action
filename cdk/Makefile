@@ -2,7 +2,7 @@ include ../docker.mk
 include ../help.mk
 include ../shell.mk
 
-IMAGE_NAME=scottbrenner/aws-cdk
+IMAGE_NAME=aws-cdk
 
 .PHONY: clean
 clean: ## Clean up after the build process.
