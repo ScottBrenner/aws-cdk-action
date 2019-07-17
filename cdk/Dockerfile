@@ -1,4 +1,4 @@
-FROM node:slim
+FROM alpine:latest
 
 LABEL name="aws-cdk"
 LABEL version="0.0.1"
@@ -12,7 +12,10 @@ LABEL "com.github.actions.color"="yellow"
 
 LABEL "maintainer"="Scott Brenner <scott@scottbrenner.me>"
 
-RUN npm install -g aws-cdk
+RUN apk add nodejs nodejs-npm python3 
+
+RUN npm install -g aws-cdk typescript
+
 COPY entrypoint.sh /entrypoint.sh
 RUN ["chmod", "+x", "/entrypoint.sh"]
 ENTRYPOINT ["/entrypoint.sh"]
