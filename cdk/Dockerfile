@@ -12,9 +12,10 @@ LABEL "com.github.actions.color"="yellow"
 
 LABEL "maintainer"="Scott Brenner <scott@scottbrenner.me>"
 
-RUN apk add nodejs nodejs-npm python3 
-
+RUN apk add --update nodejs nodejs-npm python3 py-pip
+RUN ln -sf python3 /usr/bin/python
 RUN npm install -g aws-cdk typescript
+RUN pip3 install aws-cdk.core
 
 COPY entrypoint.sh /entrypoint.sh
 RUN ["chmod", "+x", "/entrypoint.sh"]
