@@ -13,6 +13,6 @@ LABEL "com.github.actions.color"="yellow"
 LABEL "maintainer"="Scott Brenner <scott@scottbrenner.me>"
 
 RUN npm install -g aws-cdk
-ADD entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["--help"]
