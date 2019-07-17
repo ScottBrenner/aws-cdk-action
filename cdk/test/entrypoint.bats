@@ -8,8 +8,8 @@ function setup() {
 }
 
 @test "entrypoint runs successfully" {
-  ls
+  run ls
   # run cdk --help
-  # echo "$output"
+  echo "$output"
   [ "$status" -eq 0 ]
 }
