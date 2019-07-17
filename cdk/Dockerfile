@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.10.1
 
 LABEL name="aws-cdk"
 LABEL version="0.0.1"
