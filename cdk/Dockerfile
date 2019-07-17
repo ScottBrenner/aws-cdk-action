@@ -1,7 +1,7 @@
 FROM alpine:edge
 
 LABEL name="aws-cdk"
-LABEL version="0.0.1"
+LABEL version="1.0.0"
 LABEL repository="https://github.com/ScottBrenner/aws-cdk-action"
 LABEL homepage="https://github.com/ScottBrenner/aws-cdk-action"
 
