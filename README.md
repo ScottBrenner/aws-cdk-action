@@ -1,2 +1,2 @@
 # aws-cdk-action
-GitHub Action for AWS CDK
+GitHub Actions for AWS CDK
