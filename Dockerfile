@@ -6,7 +6,7 @@ LABEL repository="https://github.com/ScottBrenner/aws-cdk-action"
 LABEL homepage="https://github.com/ScottBrenner/aws-cdk-action"
 
 LABEL "com.github.actions.name"="aws-cdk"
-LABEL "com.github.actions.description"="GitHub Actions for AWS CDK"
+LABEL "com.github.actions.description"="GitHub Action for AWS CDK"
 LABEL "com.github.actions.icon"="box"
 LABEL "com.github.actions.color"="yellow"
 
