@@ -16,7 +16,7 @@ workflow "Deploy the Stack" {
 }
 
 action "Deploy" {
-  uses = "scottbrenner/aws-cdk/cdk@master"
+  uses = "scottbrenner/aws-cdk-action@master"
   args = "deploy"
   secrets = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
 }
