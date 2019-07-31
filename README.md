@@ -2,7 +2,7 @@
 
 This Action for [AWS CDK](https://docs.aws.amazon.com/cdk/index.html) enables arbitrary actions for interacting with the AWS Cloud Development Kit (AWS CDK) via the [AWS CDK Command Line Interface (`cdk`)](https://docs.aws.amazon.com/cdk/latest/guide/tools.html#cli).
 
-_Currently supports CDK apps created with TypeScript, JavaScript, and Python_
+_Currently supports CDK apps created with Python_
 
 ## Usage
 
