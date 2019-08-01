@@ -12,10 +12,8 @@ LABEL "com.github.actions.color"="yellow"
 
 LABEL "maintainer"="Scott Brenner <scott@scottbrenner.me>"
 
-RUN apk update && apk upgrade
-RUN apk add nodejs nodejs-npm python3
+RUN apk --no-cache add nodejs nodejs-npm python3
 RUN npm install -g aws-cdk
-RUN rm -rf /var/cache/apk/*
 RUN pip3 install aws-cdk.core
 
 COPY entrypoint.sh /entrypoint.sh
