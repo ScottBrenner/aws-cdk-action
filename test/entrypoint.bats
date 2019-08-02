@@ -3,12 +3,13 @@
 PATH="$PATH:$BATS_TEST_DIRNAME/bin"
 
 function setup() {
+  # Override PATH to mock out the aws cli
+  export PATH="$BATS_TEST_DIRNAME/bin:$PATH"
   # Ensure GITHUB_WORKSPACE is set
-  export GITHUB_WORKSPACE="."
+  export GITHUB_WORKSPACE='.'
 }
 
 @test "entrypoint runs successfully" {
-  run cdk --help
-  echo "$output"
+  run $GITHUB_WORKSPACE/entrypoint.sh help
   [ "$status" -eq 0 ]
 }
