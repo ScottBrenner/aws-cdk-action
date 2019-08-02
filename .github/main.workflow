@@ -1,25 +1,33 @@
 workflow "Build and Publish" {
   on = "push"
-  resolves = "Publish"
+  resolves = "Docker Publish"
 }
 
-action "Lint" {
-  uses = "actions/action-builder/shell@master"
-  runs = "make"
-  args = "lint"
+action "Shell Lint" {
+  uses = "actions/bin/shellcheck@master"
+  args = "entrypoint.sh"
 }
 
 action "Test" {
-  uses = "actions/action-builder/shell@master"
-  runs = "make"
-  args = "test"
+  uses = "actions/bin/bats@master"
+  args = "test/*.bats"
+}
+
+action "Docker Lint" {
+  uses = "docker://replicated/dockerfilelint"
+  args = ["Dockerfile"]
 }
 
 action "Build" {
-  needs = ["Lint", "Test"]
-  uses = "actions/action-builder/docker@master"
-  runs = "make"
-  args = "build"
+  needs = ["Shell Lint", "Test", "Docker Lint"]
+  uses = "actions/docker/cli@master"
+  args = "build -t aws-cdk-action ."
+}
+
+action "Docker Tag" {
+  needs = ["Build"]
+  uses = "actions/docker/tag@master"
+  args = "aws-cli-action scottbrenner/aws-cli-action --no-latest"
 }
 
 action "Publish Filter" {
@@ -34,9 +42,8 @@ action "Docker Login" {
   secrets = ["DOCKER_USERNAME", "DOCKER_PASSWORD"]
 }
 
-action "Publish" {
-  needs = ["Docker Login"]
-  uses = "actions/action-builder/docker@master"
-  runs = "make"
-  args = "publish"
+action "Docker Publish" {
+  needs = ["Docker Tag", "Docker Login"]
+  uses = "actions/docker/cli@master"
+  args = "push scottbrenner/aws-cli-action"
 }
