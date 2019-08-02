@@ -12,6 +12,7 @@ function setup() {
 
 @test "entrypoint runs successfully" {
   ls
+  chmod a+x test/bin/cdk
   run cdk help
   echo $output
   [ "$status" -eq 0 ]
