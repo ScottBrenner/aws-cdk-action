@@ -24,26 +24,26 @@ action "Build" {
   args = "build -t aws-cdk-action ."
 }
 
-action "Docker Tag" {
-  needs = ["Build"]
-  uses = "actions/docker/tag@master"
-  args = "aws-cli-action scottbrenner/aws-cli-action --no-latest"
-}
-
 action "Publish Filter" {
   needs = ["Build"]
   uses = "actions/bin/filter@master"
   args = "branch master"
 }
 
-action "Docker Login" {
+action "Docker Tag" {
   needs = ["Publish Filter"]
+  uses = "actions/docker/tag@master"
+  args = "aws-cli-action scottbrenner/aws-cli-action --no-latest"
+}
+
+action "Docker Login" {
+  needs = ["Docker Tag"]
   uses = "actions/docker/login@master"
   secrets = ["DOCKER_USERNAME", "DOCKER_PASSWORD"]
 }
 
 action "Docker Publish" {
-  needs = ["Docker Tag", "Docker Login"]
+  needs = ["Docker Login"]
   uses = "actions/docker/cli@master"
   args = "push scottbrenner/aws-cli-action"
 }
