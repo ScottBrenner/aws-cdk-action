@@ -33,7 +33,7 @@ action "Publish Filter" {
 action "Docker Tag" {
   needs = ["Publish Filter"]
   uses = "actions/docker/tag@master"
-  args = "aws-cli-action scottbrenner/aws-cli-action --no-latest"
+  args = "aws-cli-action scottbrenner/aws-cdk-action --no-latest"
 }
 
 action "Docker Login" {
@@ -45,5 +45,5 @@ action "Docker Login" {
 action "Docker Publish" {
   needs = ["Docker Login"]
   uses = "actions/docker/cli@master"
-  args = "push scottbrenner/aws-cli-action"
+  args = "push scottbrenner/aws-cdk-action"
 }
