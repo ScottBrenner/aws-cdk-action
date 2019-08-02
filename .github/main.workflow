@@ -14,7 +14,7 @@ action "Test" {
 }
 
 action "Docker Lint" {
-  uses = "docker://replicated/dockerfilelint:26132b9"
+  uses = "docker://replicated/dockerfilelint:be1f746"
   args = ["Dockerfile"]
 }
 
