@@ -10,6 +10,6 @@ function setup() {
 }
 
 @test "entrypoint runs successfully" {
-  run cdk --help
+  run ls
   [ "$status" -eq 0 ]
 }
