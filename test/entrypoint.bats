@@ -11,7 +11,8 @@ function setup() {
 
 
 @test "entrypoint runs successfully" {
-  run $GITHUB_WORKSPACE/entrypoint.sh --help
+  ls
+  run cdk help
   echo $output
   [ "$status" -eq 0 ]
 }
