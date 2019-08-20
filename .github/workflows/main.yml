@@ -1,0 +1,34 @@
+name: CI
+
+on: [push]
+
+jobs:
+  shell-lint:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/bin/shellcheck@master
+    - name: Shell lint
+      with:
+        args: entrypoint.sh
+
+  dockerfile-lint:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: docker://replicated/dockerfilelint:09a5034
+    - name: Dockerfile lint
+      with:
+        args: Dockerfile
+
+  test:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/bin/bats@master
+    - name: Test
+      with:
+        args: test/*.bats
