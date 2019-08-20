@@ -8,8 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/bin/shellcheck@master
+    - uses: actions/checkout@v1
+    - name: Checkout
+
     - name: Shell lint
+      uses: actions/bin/shellcheck@master
       with:
         args: entrypoint.sh
 
@@ -18,8 +21,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: docker://replicated/dockerfilelint:09a5034
     - name: Dockerfile lint
+      uses: docker://replicated/dockerfilelint:09a5034
       with:
         args: Dockerfile
 
@@ -28,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/bin/bats@master
     - name: Test
+      uses: actions/bin/bats@master
       with:
         args: test/*.bats
