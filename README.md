@@ -6,26 +6,37 @@ _Currently supports CDK apps created with Python_
 
 ## Usage
 
-An example workflow for synthesizing an AWS CloudFormation template for your app and then invoking the AWS CloudFormation create/update API to deploy it into your AWS account using `cdk deploy`.
+An example workflow for synthesizing an AWS CloudFormation template for your app using `cdk synth`.
 
+```yaml
+name: aws-cdk-synth
 
-```hcl
-workflow "Deploy the Stack" {
-  on = "push"
-  resolves = ["Deploy"]
-}
+on: [push]
 
-action "Deploy" {
-  uses = "scottbrenner/aws-cdk-action@master"
-  args = "deploy"
-  secrets = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
-}
+jobs:
+  cdk-synth:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: AWS CDK Synth
+      uses: scottbrenner/aws-cdk-action@master
+      with:
+        args: synth
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 ```
 
 ### Secrets
 
 - `AWS_ACCESS_KEY_ID` – **Required** The AWS access key part of your credentials ([more info](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys))
 - `AWS_SECRET_ACCESS_KEY` – **Required** The AWS secret access key part of your credentials ([more info](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys))
+
+For details on creating secrets and using them with GitHub Actions, see [Creating and using secrets (encrypted variables)](https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables).
 
 ### Environment
 
