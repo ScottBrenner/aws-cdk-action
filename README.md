@@ -9,7 +9,7 @@ _Currently supports CDK apps created with Python_
 An example workflow for synthesizing an AWS CloudFormation template for your app using `cdk synth`.
 
 ```yaml
-name: aws-cdk-synth
+name: AWS CDK Synth
 
 on: [push]
 
