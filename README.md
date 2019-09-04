@@ -14,7 +14,7 @@ name: aws-cdk-synth
 on: [push]
 
 jobs:
-  cdk-synth:
+  AWS CDK Synth:
 
     runs-on: ubuntu-latest
     
@@ -22,7 +22,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
 
-    - name: AWS CDK Synth
+    - name: CDK Synth
       uses: scottbrenner/aws-cdk-action@master
       with:
         args: synth
