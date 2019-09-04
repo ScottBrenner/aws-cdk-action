@@ -14,7 +14,7 @@ name: AWS CDK Synth
 on: [push]
 
 jobs:
-  AWS CDK Synth:
+  aws-cdk-synth:
 
     runs-on: ubuntu-latest
     
