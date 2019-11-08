@@ -1,0 +1,9 @@
+name: 'aws-cdk-action'
+author: 'GitHub'
+description: 'GitHub Action for AWS CDK'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'box'
+  color: 'yellow'
