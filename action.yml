@@ -1,5 +1,5 @@
 name: 'aws-cdk-action'
-author: 'GitHub'
+author: 'Scott Brenner <scott@scottbrenner.me>'
 description: 'GitHub Action for AWS CDK'
 runs:
   using: 'docker'
