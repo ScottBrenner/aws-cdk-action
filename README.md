@@ -23,7 +23,7 @@ jobs:
       uses: actions/checkout@v1
 
     - name: CDK Synth
-      uses: scottbrenner/aws-cdk-action@master
+      uses: docker://docker.pkg.github.com/scottbrenner/aws-cdk-action/aws-cdk-action:latest
       with:
         args: synth
       env:
