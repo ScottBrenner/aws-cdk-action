@@ -22,6 +22,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
 
+    - name: Log into registry
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+
     - name: CDK Synth
       uses: docker://docker.pkg.github.com/scottbrenner/aws-cdk-action/aws-cdk-action:latest
       with:
