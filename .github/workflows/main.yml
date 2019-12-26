@@ -14,7 +14,7 @@ on:
   pull_request:
 
 env:
-  IMAGE_NAME: cdk-lint-action
+  IMAGE_NAME: aws-cdk-action
 
 jobs:
   # Run tests.
@@ -53,7 +53,7 @@ jobs:
 
       - name: Push image
         run: |
-          IMAGE_ID=docker.pkg.github.com/scottbrenner/cdk-lint-action/$IMAGE_NAME
+          IMAGE_ID=docker.pkg.github.com/scottbrenner/aws-cdk-action/$IMAGE_NAME
 
           # Strip git ref prefix from version
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
