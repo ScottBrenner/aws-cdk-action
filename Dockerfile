@@ -1,7 +1,6 @@
 FROM alpine:3
 
 LABEL name="aws-cdk-action"
-LABEL version="1.2.0"
 LABEL repository="https://github.com/ScottBrenner/aws-cdk-action"
 LABEL homepage="https://github.com/ScottBrenner/aws-cdk-action"
 
