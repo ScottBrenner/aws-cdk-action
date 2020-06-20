@@ -17,7 +17,7 @@ jobs:
   aws-cdk-synth:
 
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -40,7 +40,7 @@ For details on creating secrets and using them with GitHub Actions, see [Creatin
 
 ### Environment
 
-Each Stack instance in your AWS CDK app is explicitly or implicitly associated with an environment (`env`). An environment is the target AWS account and AWS Region into which this stack needs to be deployed. 
+Each Stack instance in your AWS CDK app is explicitly or implicitly associated with an environment (`env`). An environment is the target AWS account and AWS Region into which this stack needs to be deployed.
 
 See [the CDK developer guide](https://docs.aws.amazon.com/cdk/latest/guide/environments.html) for more information.
 
