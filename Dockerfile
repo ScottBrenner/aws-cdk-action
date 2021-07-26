@@ -1,4 +1,4 @@
-FROM alpine:3.13
+FROM alpine:3.14.0
 
 LABEL name="aws-cdk-action"
 LABEL repository="https://github.com/ScottBrenner/aws-cdk-action"
