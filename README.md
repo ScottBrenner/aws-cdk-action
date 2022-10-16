@@ -1,6 +1,6 @@
 # GitHub Action for AWS CDK
 
-This Action for [AWS CDK](https://docs.aws.amazon.com/cdk/index.html) enables arbitrary actions for interacting with the AWS Cloud Development Kit (AWS CDK) via the [AWS CDK Command Line Interface (`cdk`)](https://docs.aws.amazon.com/cdk/latest/guide/cli.html).
+This Action for [AWS CDK](https://docs.aws.amazon.com/cdk/index.html) enables arbitrary actions for interacting with the AWS Cloud Development Kit (AWS CDK) via the [AWS CDK Toolkit (`cdk` command)](https://docs.aws.amazon.com/cdk/v2/guide/cli.html).
 
 _Currently supports CDK apps created with Python and JavaScript_
 
