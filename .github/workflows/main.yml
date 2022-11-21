@@ -1,3 +1,4 @@
+---
 name: CI
 
 on:
@@ -64,23 +65,25 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Build image
-        run: docker build . --file Dockerfile --tag $IMAGE_NAME
+        run: docker build . --file Dockerfile --tag "$IMAGE_NAME"
 
       - name: Log into GitHub Container Registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
+        run: >
+          echo "${{ secrets.GITHUB_TOKEN }}" |
+          docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Push image to GitHub Container Registry
         run: |
-          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
+          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/"$IMAGE_NAME"
           # Change all uppercase to lowercase
-          IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+          IMAGE_ID=$(echo "$IMAGE_ID" | tr '[:upper:]' '[:lower:]')
           SHA="${{ github.sha }}"
           # Strip git ref prefix from version
           REF=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-          echo IMAGE_ID=$IMAGE_ID
-          echo SHA=$SHA
-          echo REF=$REF
-          docker tag $IMAGE_NAME $IMAGE_ID:$SHA
-          docker tag $IMAGE_NAME $IMAGE_ID:$REF
-          docker push $IMAGE_ID:$SHA
-          docker push $IMAGE_ID:$REF
+          echo IMAGE_ID="$IMAGE_ID"
+          echo SHA="$SHA"
+          echo REF="$REF"
+          docker tag "$IMAGE_NAME" "$IMAGE_ID":"$SHA"
+          docker tag "$IMAGE_NAME" "$IMAGE_ID":"$REF"
+          docker push "$IMAGE_ID":"$REF"
+          docker push "$IMAGE_ID":"$SHA"
