@@ -16,6 +16,13 @@ RUN apk --no-cache add nodejs npm python3 py3-pip git make musl-dev go bash
 RUN npm install -g aws-cdk
 RUN pip3 install --no-cache-dir aws-cdk.core
 
+# Configure Go
+ENV GOROOT /usr/lib/go
+ENV GOPATH /go
+ENV PATH /go/bin:$PATH
+
+RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
+
 COPY entrypoint.sh /entrypoint.sh
 RUN ["chmod", "+x", "/entrypoint.sh"]
 ENTRYPOINT ["/entrypoint.sh"]
