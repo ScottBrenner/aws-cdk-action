@@ -20,10 +20,10 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: CDK Synth
-      uses: scottbrenner/aws-cdk-action@master
+      uses: scottbrenner/aws-cdk-action@v1.5.0
       with:
         args: synth
       env:
