@@ -14,7 +14,7 @@ LABEL "maintainer"="Scott Brenner <scott@scottbrenner.me>"
 
 RUN apk --no-cache add nodejs npm python3 py3-pip
 RUN npm install -g aws-cdk
-RUN python3 -m pip install aws-cdk-lib --break-system-packages
+RUN pip3 install aws-cdk-lib --break-system-packages
 
 COPY entrypoint.sh /entrypoint.sh
 RUN ["chmod", "+x", "/entrypoint.sh"]
