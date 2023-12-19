@@ -13,7 +13,6 @@ LABEL "com.github.actions.color"="yellow"
 LABEL "maintainer"="Scott Brenner <scott@scottbrenner.me>"
 
 RUN apk --no-cache add nodejs npm python3 pipx
-RUN pipx ensurepath
 RUN npm install -g aws-cdk-lib
 RUN pipx install --no-cache aws-cdk-lib
 
