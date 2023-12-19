@@ -13,10 +13,8 @@ LABEL "com.github.actions.color"="yellow"
 LABEL "maintainer"="Scott Brenner <scott@scottbrenner.me>"
 
 RUN apk --no-cache add nodejs npm python3 py3-pip
-RUN npm install -g aws-cdk-lib
+RUN npm install -g aws-cdk
 RUN python3 -m pip install aws-cdk-lib --break-system-packages
-
-RUN export PATH=$PATH:$(npm get prefix)/bin
 
 COPY entrypoint.sh /entrypoint.sh
 RUN ["chmod", "+x", "/entrypoint.sh"]
