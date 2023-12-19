@@ -1,4 +1,4 @@
-FROM alpine:3.18.5
+FROM alpine:3.19.0
 
 LABEL name="aws-cdk-action"
 LABEL repository="https://github.com/ScottBrenner/aws-cdk-action"
@@ -14,7 +14,7 @@ LABEL "maintainer"="Scott Brenner <scott@scottbrenner.me>"
 
 RUN apk --no-cache add nodejs npm python3 py3-pip
 RUN npm install -g aws-cdk
-RUN pip3 install --no-cache-dir aws-cdk.core
+RUN pip3 install aws-cdk-lib --break-system-packages
 
 COPY entrypoint.sh /entrypoint.sh
 RUN ["chmod", "+x", "/entrypoint.sh"]
