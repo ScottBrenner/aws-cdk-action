@@ -15,7 +15,7 @@ LABEL "maintainer"="Scott Brenner <scott@scottbrenner.me>"
 RUN apk --no-cache add nodejs npm python3 pipx
 RUN pipx ensurepath
 RUN npm install -g aws-cdk-lib
-RUN pipx install --no-dir aws-cdk-lib
+RUN pipx install --no-cache aws-cdk-lib
 
 COPY entrypoint.sh /entrypoint.sh
 RUN ["chmod", "+x", "/entrypoint.sh"]
