@@ -12,9 +12,16 @@ LABEL "com.github.actions.color"="yellow"
 
 LABEL "maintainer"="Scott Brenner <scott@scottbrenner.me>"
 
-RUN apk --no-cache add nodejs npm python3 py3-pip
+RUN apk --no-cache add nodejs npm python3 py3-pip git make musl-dev go
 RUN npm install -g aws-cdk
 RUN pip3 install aws-cdk-lib --break-system-packages
+
+# Configure Go
+ENV GOROOT /usr/lib/go
+ENV GOPATH /go
+ENV PATH /go/bin:$PATH
+
+RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 
 COPY entrypoint.sh /entrypoint.sh
 RUN ["chmod", "+x", "/entrypoint.sh"]
