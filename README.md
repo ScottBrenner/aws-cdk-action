@@ -2,7 +2,7 @@
 
 This Action for [AWS CDK](https://docs.aws.amazon.com/cdk/index.html) enables arbitrary actions for interacting with the AWS Cloud Development Kit (AWS CDK) via the [AWS CDK Toolkit (`cdk` command)](https://docs.aws.amazon.com/cdk/v2/guide/cli.html).
 
-_Currently supports CDK apps created with Python and JavaScript_
+_Currently supports CDK apps created with JavaScript, Go, Python and TypeScript._
 
 ## Usage
 
@@ -23,7 +23,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: CDK Synth
-      uses: scottbrenner/aws-cdk-action@v1.5.0
+      uses: scottbrenner/aws-cdk-action@v1.6.0
       with:
         args: synth
       env:
