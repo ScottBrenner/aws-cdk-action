@@ -12,7 +12,7 @@ LABEL "com.github.actions.color"="yellow"
 
 LABEL "maintainer"="Scott Brenner <scott@scottbrenner.me>"
 
-RUN apk --no-cache add nodejs npm python3 py3-pip git make musl-dev go bash
+RUN apk --no-cache add nodejs npm python3 py3-pip git make musl-dev go bash docker
 RUN npm install -g aws-cdk
 RUN pip3 install aws-cdk-lib --break-system-packages
 
